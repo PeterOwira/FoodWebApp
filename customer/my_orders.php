@@ -110,6 +110,9 @@ $order_status = "<b style='color:green;'>Paid</b>";
 <a href="confirm.php?order_id=<?php echo $order_id; ?>" target="blank" class="btn btn-success btn-xs" > Confirm If Paid </a>
 </td>
 
+<td>
+<a href="my_order_tracking.php?order_id=<?php echo $order_id; ?>" target="blank" class="btn btn-light btn-xs" > Check Status</a>
+</td>
 
 </tr><!-- tr Ends -->
 

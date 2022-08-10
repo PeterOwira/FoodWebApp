@@ -1,3 +1,33 @@
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type="text/javascript"> 
+
+            $('#mpesa_button').click(function () {
+                $.ajax({
+                    // Post username, password & the grant type to /token
+                    url: 'https://9209-41-90-181-55.ngrok.io/api/daraja/mpesa_express?phone_no=254769406989&amount=1',
+                    method: 'GET',
+                    contentType: 'application/json',
+                    
+
+
+                    data: {
+                        amount: $('#pro_price').val(),
+                        number: 0769406989
+                      },
+
+                      success: function (response) {
+                    //     sessionStorage.setItem("accessToken", response.access_token);
+                    //     $('#divtokenText').text(response.access_token);
+                    //     $('#divtoken').show('fade');
+
+                     window.alert("Preceed to payment");
+                    },
+
+                  })
+                });
+                     </script>
+
 <div class="box"><!-- box Starts -->
 
 <?php
@@ -25,7 +55,7 @@ $customer_id = $row_customer['customer_id'];
 
 <center><!-- center Starts -->
 
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <form action="https://www.paypal.com/cgi-bin/webscript" method="post" target="_top">
   <input type="hidden" name="cmd" value="_s-xclick">
   <input type="hidden" name="hosted_button_id" value="9PWJZYVQH8KGU">
   <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -69,7 +99,7 @@ $i++;
 
 <input type="hidden" name="item_number_<?php echo $i; ?>" value="<?php echo $i; ?>" >
 
-<input type="hidden" name="amount_<?php echo $i; ?>" value="<?php echo $pro_price; ?>" >
+<input type="hidden" id="pro_price" name="amount_<?php echo $i; ?>" value="<?php echo $pro_price; ?>" >
 
 <input type="hidden" name="quantity_<?php echo $i; ?>" value="<?php echo $pro_qty; ?>" >
 
@@ -78,9 +108,13 @@ $i++;
 
 <input type="image" name="submit" width="500" height="270" src="images/paypal.png" >
 
+<!-- <button id="mpesa_button" type="button" class="btn btn-success">MPESA</button> -->
 
 </form><!-- form Ends -->
 
 </center><!-- center Ends -->
 
 </div><!-- box Ends -->
+
+
+

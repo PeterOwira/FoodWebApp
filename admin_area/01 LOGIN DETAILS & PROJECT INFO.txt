@@ -2,7 +2,6 @@
 
 **Database Name: ecom_store**
 
-**Developed by Yasser Dalouzi**
 
 **Recommended PHP Version 5.6 and Newer**
 

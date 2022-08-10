@@ -67,6 +67,7 @@ else {
 <th>Total Amount</th>
 <th>Status</th>
 <th>Action</th>
+<th>Delivery</th>
 
 
 </tr>
@@ -188,6 +189,39 @@ echo $order_status='Completed';
 
 </td>
 
+<td>
+
+<?
+
+$query = "SELECT order_stage FROM customer_orders WHERE order_id='$order_id'";
+
+$run = mysqli_query($con,$query);
+
+$row = mysqli_fetch_array($run);
+
+$stage = $row['order_stage'];
+
+//if($stage=='Confirmed' || $stage=='Cofirmed'){
+//	$stage = $stage;
+//}
+//echo "stage: ".$stage;
+?>
+
+<form method="post">
+
+<select name="order_stage">
+
+ 
+  <option value="Picked by courier">Picked by courier</option>
+  <option value="On the way">On the way</option>
+  <option value="Ready for pickup">Ready for pickup</option>
+</select>
+<button name="submit_tracker" type="submit">Submit</button>
+
+</form>
+
+</td>
+
 
 </tr>
 
@@ -208,4 +242,25 @@ echo $order_status='Completed';
 </div><!-- 2 row Ends -->
 
 
-<?php } ?>
+<?php }  
+
+
+if(isset($_POST['submit_tracker'])){
+    $trackeredit = $_POST['order_stage'];
+    echo $trackeredit;
+
+    if ($trackeredit==="Picked by courier") {
+        $update_tracker = "update tracker set Picked='1' where order_id='$order_id'";
+        $run_update_tracker = mysqli_query($con,$update_tracker);
+        
+    } elseif($trackeredit==="On the way") {
+        $update_tracker = "update tracker set Transit='1' where order_id='$order_id'";
+        $run_update_tracker = mysqli_query($con,$update_tracker);
+
+    } elseif($trackeredit==="Ready for pickup") {
+        $update_tracker = "update tracker set Pickup='1' where order_id='$order_id'";
+        $run_update_tracker = mysqli_query($con,$update_tracker);
+    }
+    
+}
+?>

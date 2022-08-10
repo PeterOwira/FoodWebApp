@@ -172,7 +172,7 @@ $cat_title = $row_cat['cat_title'];
 
 <p style="font-size:15px; font-weight:bold;">
 
-Product Url Example : navy-blue-t-shirt
+Product Url Example : kuku-choma
 
 </p>
 

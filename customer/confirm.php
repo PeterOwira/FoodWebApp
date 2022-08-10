@@ -67,9 +67,9 @@ $order_id = $_GET['order_id'];
 <select name="payment_mode" class="form-control"><!-- select Starts -->
 
 <option>Select Payment Mode</option>
-<option>Bank Code</option>
-<option>UBL/Omni</option>
-<option>Western Union</option>
+<option>MPESA</option>
+<option>ATM</option>
+<option>Airtel Money</option>
 
 </select><!-- select Ends -->
 
@@ -144,6 +144,10 @@ $run_customer_order = mysqli_query($con,$update_customer_order);
 $update_pending_order = "update pending_orders set order_status='$complete' where order_id='$update_id'";
 
 $run_pending_order = mysqli_query($con,$update_pending_order);
+
+$start_tracker="insert into tracker (TracKID,order_id,Picked,Transit,Pickup,confrimed_order) values ('','$update_id','0','0','0','1')";
+
+$run_start_tracker= mysqli_query($con,$start_tracker);
 
 if($run_pending_order){
 

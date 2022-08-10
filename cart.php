@@ -502,7 +502,7 @@ $product_label
 </div><!-- box-header Ends -->
 
 <p class="text-muted">
-Shipping and additional costs are calculated based on the values you have entered.
+Delivery costs are calculated based on the values you have entered.
 </p>
 
 <div class="table-responsive"><!-- table-responsive Starts -->
